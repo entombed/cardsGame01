@@ -9,26 +9,26 @@ export class Area02Component implements OnInit {
 
   constructor() { }
   arrayCards = [
-    'img1.png',
-    'img2.png',
-    'img3.png',
-    'img4.png',
-    'img5.png',
-    'img6.png',
-    'img7.png',
-    'img8.png',
-    'img9.png',
-    'img10.png',
-    'img11.png',
-    'img12.png',
-    'img13.png',
-    'img14.png',
-    'img15.png',
-    'img16.png',
-    'img17.png',
-    'img18.png',
-    'img19.png',
-    'img20.png'
+    '1.png',
+    '2.png',
+    '3.png',
+    '4.png',
+    '5.png',
+    '6.png',
+    '7.png',
+    '8.png',
+    '9.png',
+    '10.png',
+    '11.png',
+    '12.png',
+    '13.png',
+    '14.png',
+    '15.png',
+    '16.png',
+    '17.png',
+    '18.png',
+    '19.png',
+    '20.png'
   ]
   ngOnInit() {
   }

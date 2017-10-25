@@ -1,20 +1,19 @@
-ul {
+.area02 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    list-style: none;
     height: 210px;
     overflow: scroll;
     margin: 0;
     padding: 10px;
-
-
 }
- li {
+
+.img-block {
+  margin: 5px;
+}
+
+.img-card {
      width: 100px;
-     height: 200px;
-     background-color: #c7c7c7;
-     margin: 5px;
  }
 
 .area02 {
