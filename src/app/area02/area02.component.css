@@ -1,0 +1,25 @@
+ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    height: 210px;
+    overflow: scroll;
+    margin: 0;
+    padding: 10px;
+
+
+}
+ li {
+     width: 100px;
+     height: 200px;
+     background-color: #c7c7c7;
+     margin: 5px;
+ }
+
+.area02 {
+    border-top-color: #c00000;
+    border-top-style: solid;
+    border-top-width: 1px;
+    margin-bottom: 15px;
+ }
