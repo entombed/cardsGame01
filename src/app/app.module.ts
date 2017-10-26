@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { Area01Component } from './area01/area01.component';
 import { Area02Component } from './area02/area02.component';
-import {AccordionModule} from 'primeng/primeng';
+//import {AccordionModule} from 'primeng/primeng';
 //import {AccordionModule} from 'primeng/components/accordion/accordion';
 
 @NgModule({
@@ -14,8 +14,8 @@ import {AccordionModule} from 'primeng/primeng';
     Area02Component
   ],
   imports: [
-    BrowserModule,
-    AccordionModule
+    BrowserModule
+//    AccordionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
