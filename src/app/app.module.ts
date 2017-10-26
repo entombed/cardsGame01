@@ -6,6 +6,7 @@ import { Area01Component } from './area01/area01.component';
 import { Area02Component } from './area02/area02.component';
 //import {AccordionModule} from 'primeng/primeng';
 //import {AccordionModule} from 'primeng/components/accordion/accordion';
+//import {FieldsetModule} from 'primeng/primeng';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,6 @@ import { Area02Component } from './area02/area02.component';
   ],
   imports: [
     BrowserModule
-//    AccordionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
