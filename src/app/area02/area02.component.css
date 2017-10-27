@@ -12,12 +12,9 @@
     background-color: #a3a3a3;
 }
 
-.img-block {
-    margin: 5px;
-}
-
 .img-card {
-    width: 100px;
+    height: 150px;
+    margin: 5px;
 }
 .img-card:hover {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);

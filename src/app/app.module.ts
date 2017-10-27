@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { Area01Component } from './area01/area01.component';
 import { Area02Component } from './area02/area02.component';
 import {PanelModule} from 'primeng/primeng';
+import {DragDropModule} from 'primeng/primeng';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {PanelModule} from 'primeng/primeng';
     BrowserModule,
     PanelModule,
     AngularFontAwesomeModule,
+    DragDropModule,
     BrowserAnimationsModule
   ],
   providers: [],
