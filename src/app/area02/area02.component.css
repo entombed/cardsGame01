@@ -1,8 +1,8 @@
-.area02 {
+.accordion-block-content {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 210px;
+    height: 250px;
     overflow: scroll;
     margin: 0 0 15px 0;
     padding: 10px;
