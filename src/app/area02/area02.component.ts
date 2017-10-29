@@ -49,6 +49,9 @@ export class Area02Component implements OnInit {
     this.startMousePosY = event.clientY;
     this.startImgPosX = event.target.x;
     this.startImgPosY = event.target.y;
+    this.zIndex = this.zIndex + 1;
+    event.target.style.zIndex = this.zIndex;
+
   }
 
   drag(event) {
@@ -57,28 +60,22 @@ export class Area02Component implements OnInit {
     let offsetY = this.startMousePosY - event.clientY;
     this.currentImgPosX = this.startImgPosX - offsetX;
     this.currentImgPosY = this.startImgPosY - offsetY;
-    this.zIndex = this.zIndex + 1;
-    event.target.style.position = 'absolute';
+    console.log(this.currentImgPosX + ' !! ' + this.currentImgPosY)
     event.target.style.top = this.currentImgPosY + 'px';
     event.target.style.left = this.currentImgPosX + 'px';
     event.target.style.height = 'auto';
     event.target.style.borderRadius = '10px';
-    event.target.style.zIndex = this.zIndex; 
-/*     console.log(this.startMousePosX + " " + this.startMousePosY + " " + this.startImgPosX + " " + this.startImgPosY);
-    console.log(offsetX + " " + offsetY + ' !!!!'); */
-  }
+    event.target.style.position = 'absolute';
+
+ }
 
   dragEnd(event) {
-    
     let offsetX = this.startMousePosX - event.clientX;
     let offsetY = this.startMousePosY - event.clientY;
     this.currentImgPosX = this.startImgPosX - offsetX;
     this.currentImgPosY = this.startImgPosY - offsetY;
-    event.target.style.position = 'absolute';
+    console.log(this.currentImgPosX + ' && ' + this.currentImgPosY)
     event.target.style.top = this.currentImgPosY + 'px';
     event.target.style.left = this.currentImgPosX + 'px';
-    event.target.style.height = 'auto';
-    event.target.style.borderRadius = '10px';
-    
   }
 }
