@@ -20,3 +20,13 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     cursor: pointer;
 }
+.word-block {
+    display: inline-block;
+    padding: 10px;
+    margin: 2px;
+    background-color: #b4d4ff;
+    font-size: 25px;
+    border: 1px solid #4b4a4a;
+    border-radius: 5px;
+
+}
