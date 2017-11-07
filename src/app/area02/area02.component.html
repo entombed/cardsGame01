@@ -1,7 +1,7 @@
 
 <p-panel header="Набор асоциативных карт 2" [collapsed]="false" [toggleable]="true">
     <div class="accordion-block-content">
-            <img [ngClass]='"img-card"' *ngFor="let card of arrayCards" src="./assets/images/{{ card }}" pDraggable="carsZone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)"/>
+            <img [ngClass]='"img-card"' *ngFor="let card of arrayCards" src="./assets/images/{{ card }}" pDraggable="carsZone" dropEffect="link" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)"/>
     </div>
 </p-panel>
 

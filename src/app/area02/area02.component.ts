@@ -36,14 +36,17 @@ export class Area02Component implements OnInit {
   
   ngOnInit() {
   }
-  imgDict : {
-    imgPosX:0,
-    imgPosY:0
+  startObjPos = {
+    X:0,
+    Y:0
   };
-  startMousePosX : number;
-  startMousePosY : number;
-  startObjPosX : number;
-  startObjPosY : number;
+  areaSize = {
+    height:0,
+    width:0
+  };
+  mousePosX : number;
+  mousePosY : number;
+
   currentObjPosX : number;
   currentObjPosY : number;
   zIndex : number = 0;
@@ -51,50 +54,64 @@ export class Area02Component implements OnInit {
   
 
   dragStart(event) {
+    let area = document.querySelector('body');
+    this.areaSize.height = area.clientHeight;
+    this.areaSize.width = area.clientWidth;
     this.currentTarget = event.target.className;
-    this.startMousePosX = event.clientX;
-    this.startMousePosY = event.clientY;
-    this.startObjPosX = event.target.offsetLeft;
-    this.startObjPosY = event.target.offsetTop;
+    this.mousePosX = event.clientX;
+    this.mousePosY = event.clientY;
+    this.startObjPos.X = event.target.offsetLeft;
+    this.startObjPos.Y = event.target.offsetTop;
     this.zIndex = this.zIndex + 1;
     event.target.style.zIndex = this.zIndex;
+    // console.log(this.areaSize);
   }
 
   drag(event) {
-      let offsetX = this.startMousePosX - event.clientX;
-      let offsetY = this.startMousePosY - event.clientY;
-      this.currentObjPosX = this.startObjPosX - offsetX;
-      this.currentObjPosY = this.startObjPosY - offsetY;
-      event.target.style.top = this.currentObjPosY + 'px';
-      event.target.style.left = this.currentObjPosX + 'px';
-      event.target.style.height = 'auto';
-      event.target.style.borderRadius = '10px';
-      event.target.style.position = 'absolute';
-    }
+    this.getCurrentPosition(event);
+    event.target.style.top = this.currentObjPosY + 'px';
+    event.target.style.left = this.currentObjPosX + 'px';
+    event.target.style.height = 'auto';
+    event.target.style.borderRadius = '10px';
+    event.target.style.position = 'absolute';
+    // console.log(this.currentObjPosX + ' ' + this.currentObjPosY);
+  }
 
   dragEnd(event) {
-      let offsetX = this.startMousePosX - event.clientX;
-      let offsetY = this.startMousePosY - event.clientY;
-      let currentObjPosX = this.startObjPosX - offsetX;
-      let currentObjPosY = this.startObjPosY - offsetY;
-      event.target.style.top = currentObjPosY + 'px';
-      event.target.style.left = currentObjPosX + 'px';
+    this.getCurrentPosition(event);
+    event.target.style.top = this.currentObjPosY + 'px';
+    event.target.style.left = this.currentObjPosX + 'px';
+    // console.dir(event);
   }
+
   onClick(event) {
     if (event.ctrlKey == true) {
       event.target.style.position = '';
       event.target.style.top = '';
       event.target.style.left = '';
       event.target.style.height = '';
+      event.target.style.borderRadius = '5px';
     }
   }
 
-  // getCurrentPosition(event) {
-  //   let offsetX = this.startMousePosX - event.clientX;
-  //   let offsetY = this.startMousePosY - event.clientY;
-  //   let currentObjPosX = this.startObjPosX - offsetX;
-  //   let currentObjPosY = this.startObjPosY - offsetY;
-  //   let dicPosotion = {"posX":currentObjPosX, "posY":currentObjPosY};
-  //   return dicPosotion;
-  // }
+  getCurrentPosition(event) {
+    let offsetX = this.mousePosX - event.clientX;
+    let offsetY = this.mousePosY - event.clientY;
+    this.currentObjPosX = this.startObjPos.X - offsetX;
+    this.currentObjPosY = this.startObjPos.Y - offsetY;
+    if (this.currentObjPosX <= 0) {
+      this.currentObjPosX = 0;
+    }
+    if (this.currentObjPosX >= this.areaSize.width - event.target.clientWidth) {
+      this.currentObjPosX = this.areaSize.width - event.target.clientWidth;
+    }
+    if (this.currentObjPosY <= 0) { 
+      this.currentObjPosY = 0;
+    }
+    if (this.currentObjPosY >= this.areaSize.height - event.target.clientHeight) {
+      this.currentObjPosY = this.areaSize.height - event.target.clientHeight;
+    }
+    console.log(this.areaSize);
+    console.log(this.currentObjPosX + " " + this.currentObjPosY);
+  }
 }
