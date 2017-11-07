@@ -36,10 +36,6 @@ export class Area02Component implements OnInit {
   
   ngOnInit() {
   }
-  startObjPos = {
-    X: null,
-    Y: null
-  };
 
   areaSize = {
     height: null,
@@ -51,6 +47,13 @@ export class Area02Component implements OnInit {
     Y: null
   };
 
+  targetProperties = {
+    X: null,
+    Y: null,
+    height: null,
+    width: null
+  };
+
   currentObjPosX : number;
   currentObjPosY : number;
   zIndex : number = 0;
@@ -59,7 +62,15 @@ export class Area02Component implements OnInit {
 
   dragStart(event) {
     let area = document.querySelector('body');
-    
+    let box = event.target.getBoundingClientRect();
+
+    this.targetProperties = {
+      X: box.left + pageXOffset,
+      Y: box.top + pageYOffset,
+      height: box.height,
+      width: box.width
+    };
+
     this.areaSize = {
       height: area.clientHeight,
       width: area.clientWidth
@@ -70,11 +81,6 @@ export class Area02Component implements OnInit {
     this.mousePos = {
       X: event.clientX,
       Y: event.clientY
-    };
-
-    this.startObjPos = {
-      X: event.target.offsetLeft,
-      Y: event.target.offsetTop
     };
 
     this.zIndex = this.zIndex + 1;
@@ -104,25 +110,26 @@ export class Area02Component implements OnInit {
       event.target.style.height = '';
       event.target.style.borderRadius = '5px';
     }
+    let box = event.target.getBoundingClientRect();
   }
 
   getCurrentPosition(event) {
     
     let offsetX = this.mousePos.X - event.clientX;
     let offsetY = this.mousePos.Y - event.clientY;
-    this.currentObjPosX = this.startObjPos.X - offsetX;
-    this.currentObjPosY = this.startObjPos.Y - offsetY;
+    this.currentObjPosX = this.targetProperties.X - offsetX;
+    this.currentObjPosY = this.targetProperties.Y - offsetY;
     if (this.currentObjPosX <= 0) {
       this.currentObjPosX = 0;
     }
-    if (this.currentObjPosX >= this.areaSize.width - event.target.clientWidth) {
-      this.currentObjPosX = this.areaSize.width - event.target.clientWidth;
+    if (this.currentObjPosX >= this.areaSize.width - this.targetProperties.width) {
+      this.currentObjPosX = this.areaSize.width - this.targetProperties.width;
     }
     if (this.currentObjPosY <= 0) { 
       this.currentObjPosY = 0;
     }
-    if (this.currentObjPosY >= this.areaSize.height - event.target.clientHeight) {
-      this.currentObjPosY = this.areaSize.height - event.target.clientHeight;
+    if (this.currentObjPosY >= this.areaSize.height - this.targetProperties.height) {
+      this.currentObjPosY = this.areaSize.height - this.targetProperties.height;
     }
   }
 }
