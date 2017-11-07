@@ -1,0 +1,1 @@
+ng serve --port 4201 --host 192.168.1.12
