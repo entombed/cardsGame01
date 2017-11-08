@@ -28,5 +28,10 @@
     font-size: 15px;
     border: 1px solid #4b4a4a;
     border-radius: 5px;
+}
 
+.moved {
+    height: auto;
+    position: absolute;
+    border-radius: 10px;
 }

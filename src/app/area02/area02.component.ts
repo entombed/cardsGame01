@@ -76,7 +76,7 @@ export class Area02Component implements OnInit {
       width: area.clientWidth
     }
 
-    this.currentTarget = event.target.className;
+    //this.currentTarget = event.target.className;
 
     this.mousePos = {
       X: event.clientX,
@@ -91,9 +91,9 @@ export class Area02Component implements OnInit {
     this.getCurrentPosition(event);
     event.target.style.top = this.currentObjPosY + 'px';
     event.target.style.left = this.currentObjPosX + 'px';
-    event.target.style.height = 'auto';
-    event.target.style.borderRadius = '10px';
-    event.target.style.position = 'absolute';
+    if (event.target.classList.contains('moved') == false) {
+      event.target.classList.add('moved');
+    }
   }
 
   dragEnd(event) {
@@ -104,13 +104,10 @@ export class Area02Component implements OnInit {
 
   onClick(event) {
     if (event.ctrlKey == true) {
-      event.target.style.position = '';
-      event.target.style.top = '';
-      event.target.style.left = '';
-      event.target.style.height = '';
-      event.target.style.borderRadius = '5px';
+      event.target.classList.remove('moved');
     }
-    let box = event.target.getBoundingClientRect();
+    //let box = event.target.getBoundingClientRect();
+    //console.dir(event);
   }
 
   getCurrentPosition(event) {
