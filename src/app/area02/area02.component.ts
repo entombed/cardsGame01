@@ -54,10 +54,10 @@ export class Area02Component implements OnInit {
     width: null
   };
 
-  currentObjPosX : number;
-  currentObjPosY : number;
-  zIndex : number = 0;
-  currentTarget: string = '';
+  currentObjPosX : number = null;
+  currentObjPosY : number = null;
+  zIndex : number = null;
+  //currentTarget: string = '';
 
 
   dragStart(event) {
@@ -74,7 +74,7 @@ export class Area02Component implements OnInit {
     this.areaSize = {
       height: area.clientHeight,
       width: area.clientWidth
-    }
+    };
 
     //this.currentTarget = event.target.className;
 
@@ -83,8 +83,10 @@ export class Area02Component implements OnInit {
       Y: event.clientY
     };
 
-    this.zIndex = this.zIndex + 1;
-    event.target.style.zIndex = this.zIndex;
+    if (this.zIndex != event.target.style.zIndex) {
+      this.zIndex = this.zIndex + 1;
+      event.target.style.zIndex = this.zIndex;
+    };
   }
 
   drag(event) {
@@ -105,6 +107,7 @@ export class Area02Component implements OnInit {
   onClick(event) {
     if (event.ctrlKey == true) {
       event.target.classList.remove('moved');
+      event.target.removeAttribute('style');
     }
     //let box = event.target.getBoundingClientRect();
     //console.dir(event);

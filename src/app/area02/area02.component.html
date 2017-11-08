@@ -1,19 +1,19 @@
 
 <p-panel header="Набор асоциативных карт 2" [collapsed]="false" [toggleable]="true">
     <div class="accordion-block-content">
-            <img [ngClass]='"img-card"' *ngFor="let card of arrayCards" src="./assets/images/{{ card }}" dragEffect="linkMove" pDraggable="carsZone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)"/>
+            <img [ngClass]='"img-card"' *ngFor="let card of arrayCards" src="./assets/images/{{ card }}" dragEffect="linkMove" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)"/>
     </div>
 </p-panel>
 
 <p-panel header="Набор слов" [collapsed]="false" [toggleable]="true">
     <div class="accordion-block-content">
-        <div class="word-block" *ngFor="let word of arrayWords" pDraggable="carsZone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)" > {{ word }} </div>
+        <div class="word-block" *ngFor="let word of arrayWords" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)" > {{ word }} </div>
     </div>
 </p-panel>
 
 <p-panel header="Набор асоциативных карт 1" [collapsed]="true" [toggleable]="true">
 <div class="accordion-block-content">
-    <div [ngClass]='"img-block"' *ngFor="let card of arrayCards" pDraggable="carsZone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)">
+    <div [ngClass]='"img-block"' *ngFor="let card of arrayCards" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)">
         <img [ngClass]='"img-card"' src="./assets/images/{{ card }}" />
     </div>
 </div>

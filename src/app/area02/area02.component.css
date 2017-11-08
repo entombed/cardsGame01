@@ -16,17 +16,20 @@
     height: 150px;
     margin: 5px;
 }
-.img-card:hover {
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-/*     cursor: pointer; */
+
+.img-card:hover,
+.word-block:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.37);
+    cursor: pointer;
 }
+
 .word-block {
     display: inline-block;
     padding: 10px;
     margin: 2px;
     background-color: #b4d4ff;
     font-size: 15px;
-    border: 1px solid #4b4a4a;
+    border: 1px solid #80b7ff;
     border-radius: 5px;
 }
 
