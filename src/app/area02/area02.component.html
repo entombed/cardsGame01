@@ -1,7 +1,17 @@
 
 <p-panel header="Набор асоциативных карт 2" [collapsed]="false" [toggleable]="true">
+<!--
     <div class="accordion-block-content">
-            <img [ngClass]='"img-card"' *ngFor="let card of arrayCards" src="./assets/images/{{ card }}" dragEffect="linkMove" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)"/>
+        <img [ngClass]='"img-card"' *ngFor="let card of arrayCards" src="./assets/images/{{ card }}" dragEffect="linkMove" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)"/>
+    </div>
+-->
+    <div class="accordion-block-content">
+        <div class="rev">
+            <button pButton type="button" class="ui-button-info" label="Скрыть карты" (click)="hideCardImage()"></button>
+        </div>
+        <div [ngClass]='"img-block"' *ngFor="let card of arrayCards" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)">
+            <img [ngClass]='"img-card"' src="./assets/images/{{ card }}" />
+        </div>
     </div>
 </p-panel>
 
@@ -13,6 +23,9 @@
 
 <p-panel header="Набор асоциативных карт 1" [collapsed]="true" [toggleable]="true">
 <div class="accordion-block-content">
+    <div class="rev">
+        <button pButton type="button" class="ui-button-info" label="Click" (click)="hideCardImage()"></button>
+    </div>
     <div [ngClass]='"img-block"' *ngFor="let card of arrayCards" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)">
         <img [ngClass]='"img-card"' src="./assets/images/{{ card }}" />
     </div>

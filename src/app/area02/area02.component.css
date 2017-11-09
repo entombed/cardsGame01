@@ -12,6 +12,14 @@
     background-color: #a3a3a3;
 }
 
+.img-block {
+    margin: 2px;
+}
+
+.img-block-move {
+    margin: 0;
+}
+
 .img-card {
     height: 150px;
     margin: 5px;
@@ -37,4 +45,19 @@
     height: auto;
     position: absolute;
     border-radius: 10px;
+}
+
+.hiddenCard {
+    border-radius: 5px;
+    background:
+    radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background-color:#282828;
+    background-size:16px 16px;
+}
+
+.hiddenCard .img-card {
+    opacity: 0;
 }

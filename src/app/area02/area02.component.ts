@@ -58,7 +58,7 @@ export class Area02Component implements OnInit {
   currentObjPosY : number = null;
   zIndex : number = null;
   //currentTarget: string = '';
-
+  hiddenMode = false;
 
   dragStart(event) {
     let area = document.querySelector('body');
@@ -87,6 +87,7 @@ export class Area02Component implements OnInit {
       this.zIndex = this.zIndex + 1;
       event.target.style.zIndex = this.zIndex;
     };
+    //console.dir(event)
   }
 
   drag(event) {
@@ -96,6 +97,8 @@ export class Area02Component implements OnInit {
     if (event.target.classList.contains('moved') == false) {
       event.target.classList.add('moved');
     }
+    event.target.parentElement.classList.remove('hiddenCard');
+    event.target.parentElement.classList.add('img-block-move');
   }
 
   dragEnd(event) {
@@ -108,9 +111,25 @@ export class Area02Component implements OnInit {
     if (event.ctrlKey == true) {
       event.target.classList.remove('moved');
       event.target.removeAttribute('style');
+      if (this.hiddenMode) {
+        event.target.parentElement.classList.add('hiddenCard');
+      }
+      event.target.parentElement.classList.remove('img-block-move');
     }
     //let box = event.target.getBoundingClientRect();
     //console.dir(event);
+  }
+
+  hideCardImage() {
+    this.hiddenMode = true;
+    let arrayCards = document.querySelectorAll('div.img-block');
+    //console.dir(arrayCards);
+    for (let i = 0; i < arrayCards.length; i++) {
+      if (arrayCards[i].firstElementChild.classList.contains('moved')) {
+        continue;
+      }
+      arrayCards[i].classList.add('hiddenCard');
+    }
   }
 
   getCurrentPosition(event) {
