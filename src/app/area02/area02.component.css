@@ -12,6 +12,11 @@
     background-color: #a3a3a3;
 }
 
+.button-block,
+.img-card {
+    height: 150px;
+}
+
 .img-block {
     margin: 2px;
 }
@@ -21,7 +26,6 @@
 }
 
 .img-card {
-    height: 150px;
     margin: 5px;
 }
 
