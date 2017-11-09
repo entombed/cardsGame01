@@ -12,12 +12,17 @@
     background-color: #a3a3a3;
 }
 
-.button-block,
-.img-card {
-    height: 150px;
+.button-block {
+  width: 150px;
 }
 
-.img-block {
+.button-block .ui-button {
+    width: 100%;
+    margin-bottom: 2px;
+}
+
+.img-block,
+.button-block {
     margin: 2px;
 }
 
@@ -26,7 +31,7 @@
 }
 
 .img-card {
-    margin: 5px;
+    height: 150px;
 }
 
 .img-card:hover,
