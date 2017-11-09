@@ -131,6 +131,14 @@ export class Area02Component implements OnInit {
       arrayCards[i].classList.add('hiddenCard');
     }
   }
+  showCardImage() {
+    this.hiddenMode = false;
+    let arrayCards = document.querySelectorAll('div.img-block');
+    //console.dir(arrayCards);
+    for (let i = 0; i < arrayCards.length; i++) {
+      arrayCards[i].classList.remove('hiddenCard');
+    }
+  }
 
   getCurrentPosition(event) {
 
