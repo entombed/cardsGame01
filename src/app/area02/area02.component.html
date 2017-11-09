@@ -8,8 +8,6 @@
     <div class="accordion-block-content">
         <div class="hidden-button">
             <button pButton type="button" class="ui-button-info" label="Скрыть карты" (click)="hideCardImage()"></button>
-        </div>
-        <div class="show-button">
             <button pButton type="button" class="ui-button-info" label="Окрыть карты" (click)="showCardImage()"></button>
         </div>
         <div [ngClass]='"img-block"' *ngFor="let card of arrayCards" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)">
