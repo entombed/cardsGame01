@@ -113,7 +113,7 @@ export class Area02Component implements OnInit {
     if (event.ctrlKey == true) {
       event.target.classList.remove('moved');
       event.target.removeAttribute('style');
-      if (this.hiddenMode) {
+      if (this.hiddenMode && event.target.classList.contains('img-card')) {
         event.target.classList.add('img-card-hidden');
       }
       event.target.parentElement.classList.remove('img-block-move');
