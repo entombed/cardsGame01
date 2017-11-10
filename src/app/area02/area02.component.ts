@@ -97,7 +97,9 @@ export class Area02Component implements OnInit {
     if (event.target.classList.contains('moved') == false) {
       event.target.classList.add('moved');
     }
-    event.target.parentElement.classList.remove('hiddenCard');
+    if (this.hiddenMode) {
+      event.target.classList.remove('img-card-hidden');
+    }
     event.target.parentElement.classList.add('img-block-move');
   }
 
@@ -112,7 +114,7 @@ export class Area02Component implements OnInit {
       event.target.classList.remove('moved');
       event.target.removeAttribute('style');
       if (this.hiddenMode) {
-        event.target.parentElement.classList.add('hiddenCard');
+        event.target.classList.add('img-card-hidden');
       }
       event.target.parentElement.classList.remove('img-block-move');
     }
@@ -122,26 +124,26 @@ export class Area02Component implements OnInit {
 
   hideCardImage() {
     this.hiddenMode = true;
-    let arrayCards = document.querySelectorAll('div.img-block');
+    let arrayCards = document.querySelectorAll('img.img-card');
     //console.dir(arrayCards);
     for (let i = 0; i < arrayCards.length; i++) {
-      if (arrayCards[i].firstElementChild.classList.contains('moved')) {
+      if (arrayCards[i].classList.contains('moved')) {
         continue;
       }
-      arrayCards[i].classList.add('hiddenCard');
+      arrayCards[i].classList.add('img-card-hidden');
     }
   }
+
   showCardImage() {
     this.hiddenMode = false;
-    let arrayCards = document.querySelectorAll('div.img-block');
+    let arrayCards = document.querySelectorAll('img.img-card');
     //console.dir(arrayCards);
     for (let i = 0; i < arrayCards.length; i++) {
-      arrayCards[i].classList.remove('hiddenCard');
+      arrayCards[i].classList.remove('img-card-hidden');
     }
   }
 
   getCurrentPosition(event) {
-
     let offsetX = this.mousePos.X - event.clientX;
     let offsetY = this.mousePos.Y - event.clientY;
     this.currentObjPosX = this.targetProperties.X - offsetX;

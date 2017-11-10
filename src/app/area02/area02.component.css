@@ -21,17 +21,29 @@
     margin-bottom: 2px;
 }
 
-.img-block,
-.button-block {
+.img-block {
+    background:
+    radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background-color:#282828;
+    background-size:16px 16px;
     margin: 2px;
+    border-radius: 5px;
+}
+
+.img-card,
+.img-block {
+    height: 150px;
+}
+
+.button-block {
+    margin-bottom: 5px;
 }
 
 .img-block-move {
     margin: 0;
-}
-
-.img-card {
-    height: 150px;
 }
 
 .img-card:hover,
@@ -56,17 +68,6 @@
     border-radius: 10px;
 }
 
-.hiddenCard {
-    border-radius: 5px;
-    background:
-    radial-gradient(black 15%, transparent 16%) 0 0,
-    radial-gradient(black 15%, transparent 16%) 8px 8px,
-    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-    background-color:#282828;
-    background-size:16px 16px;
-}
-
-.hiddenCard .img-card {
+.img-card-hidden {
     opacity: 0;
 }
