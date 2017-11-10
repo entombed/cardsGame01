@@ -160,6 +160,9 @@ export class Area02Component implements OnInit {
     this.hiddenMode = false;
     let arrayCards = document.querySelectorAll('img.img-card');
     for (let i = 0; i < arrayCards.length; i++) {
+      if (arrayCards[i].parentElement.classList.contains('moved')) {
+        continue;
+      }
       arrayCards[i].classList.remove('img-card-hidden');
     }
   }
