@@ -58,14 +58,14 @@
     cursor: pointer;
 }
 
-.img-block-move {
-    margin: 0;
-}
-
 .moved {
-    height: auto;
     position: absolute;
     border-radius: 10px;
+}
+
+.img-block.moved, 
+.moved .img-card {
+    height: auto;
 }
 
 .img-card-hidden {

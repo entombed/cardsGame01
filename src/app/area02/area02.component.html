@@ -18,7 +18,9 @@
 
 <p-panel header="Набор слов" [collapsed]="false" [toggleable]="true">
     <div class="accordion-block-content">
-        <div class="word-block" *ngFor="let word of arrayWords" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)" > {{ word }} </div>
+        <div class="word-block" *ngFor="let word of arrayWords" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)" > 
+            {{ word }}
+        </div>
     </div>
 </p-panel>
 

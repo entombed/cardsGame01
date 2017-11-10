@@ -30,7 +30,7 @@ export class Area02Component implements OnInit {
     '19.png',
     '20.png'
   ];
-  
+
   arrayWords = [
     "Соответствовать", "Стыдить (ся)", "Избегать", "Затягивать", "Обесценивать", "Жалеть", "Сомневаться", "Запрещать", "Бояться", "Тревожиться", "Смиряться", "Выбирать (делать выбор)", "Улучшать/совершенствовать", "Жаловаться", "Бездействовать", "Пытаться", "Подражать/копировать", "Ограничивать", "Ухаживать", "Прятать/скрывать", "Паниковать", "Проверять", "Обвинять", "Отказывать (ся)", "Общаться", "Лениться", "Наказывать", "Мечтать", "Обижать (ся)", "Ошибаться", "Ненавидеть", "Радовать (ся)",  "Терять", "Надеяться", "Обманывать (ся)", "Освобождать (ся)", "Терпеть", "Настаивать/требовать", "Молчать", "Прояснять (вносить ясность)", "Обещать", "Менять (ся)", "Подчинять (ся)", "Соревноваться", "Работать", "Решать (принимать решение)", "Баловать", "Расти/развиваться", "Рассчитывать/взвешивать", "Угрожать", "Уставать", "Умирать", "Учить (ся)", "Преследовать", "Стесняться", "Разочаровывать (ся)", "Хотеть", "Планировать", "Ревновать", "Чувствовать", "Управлять", "Удивлять (ся)", "Учитывать", "Притворяться", "Хвалить", "Шантажировать/ставить условия", "Сравнивать", "Удовлетворять", "Фантазировать/придумывать", "Прощать", "Плакать", "Преувеличивать", "Предвосхищать", "Провоцировать", "Раздражать (ся)", "Разрешать", "Развлекать (ся)", "Намекать", "Помогать", "Мстить", "Отделять (ся)", "Спешить", "Уважать", "Нуждаться", "Заботиться", "Любить", "Говорить", "Организовывать (ся)", "Инвестировать/вкладывать", "Страдать", "Игнорировать", "Критиковать/осуждать", "Контрактировать (заключать договор)", "Зависеть", "Клясться", "Идеализировать", "Болеть", "Бороться", "Заявлять/выражать", "Бить/убивать/разрушать", "Гневаться", "Возмущаться", "Делать/действовать", "Грустить/печалиться", "Кричать", "Дистанцироваться/отдаляться", "Скучать", "Казаться (показалось, кажется)", "Доказывать", "Манипулировать", "Советовать (ся)", "Творить/создавать", "Думать", "Воспитывать", "Доверять", "Спасать", "Контролировать", "Копить", "Стараться", "Жить", "Ждать", "Заставлять", "Завидовать", "Жертвовать", "Дарить", "Защищать (ся)", "Восхищать (ся)", "Богатеть", "Анализировать", "Просить"
   ];
@@ -58,7 +58,7 @@ export class Area02Component implements OnInit {
   currentObjPosX : number = null;
   currentObjPosY : number = null;
   zIndex : number = null;
-  //currentTarget: string = '';
+  currentTarget;
   hiddenMode = false;
 
   dragStart(event) {
@@ -77,58 +77,78 @@ export class Area02Component implements OnInit {
       width: area.clientWidth
     };
 
-    //this.currentTarget = event.target.className;
-
     this.mousePos = {
       X: event.clientX,
       Y: event.clientY
     };
 
-    if (this.zIndex != event.target.style.zIndex) {
+    if (event.target.classList.contains('img-card')) {
+      this.currentTarget = event.target.parentElement;
+    }
+    if (event.target.classList.contains('word-block')) {
+      this.currentTarget = event.target;
+    }
+
+    if (this.zIndex != this.currentTarget.style.zIndex) {
       this.zIndex = this.zIndex + 1;
-      event.target.style.zIndex = this.zIndex;
+      this.currentTarget.style.zIndex = this.zIndex;
     };
-    //console.dir(event)
+
   }
 
   drag(event) {
     this.getCurrentPosition(event);
-    event.target.style.top = this.currentObjPosY + 'px';
-    event.target.style.left = this.currentObjPosX + 'px';
-    if (event.target.classList.contains('moved') == false) {
-      event.target.classList.add('moved');
+    this.currentTarget.style.top = this.currentObjPosY + 'px';
+    this.currentTarget.style.left = this.currentObjPosX + 'px';
+    if (this.currentTarget.classList.contains('moved') == false) {
+      this.currentTarget.classList.add('moved');
     }
-    if (this.hiddenMode) {
-      event.target.classList.remove('img-card-hidden');
-    }
-    event.target.parentElement.classList.add('img-block-move');
   }
 
   dragEnd(event) {
     this.getCurrentPosition(event);
-    event.target.style.top = this.currentObjPosY + 'px';
-    event.target.style.left = this.currentObjPosX + 'px';
+    this.currentTarget.style.top = this.currentObjPosY + 'px';
+    this.currentTarget.style.left = this.currentObjPosX + 'px';
   }
 
   onClick(event) {
+    let img = false;
+    let word = false;
+    if (event.target.classList.contains('img-card')) {
+      this.currentTarget = event.target.parentElement;
+      img = true;
+    }
+
+    if (event.target.classList.contains('word-block')) {
+      this.currentTarget = event.target;
+      word = true;
+    }
+
     if (event.ctrlKey == true) {
-      event.target.classList.remove('moved');
-      event.target.removeAttribute('style');
-      if (this.hiddenMode && event.target.classList.contains('img-card')) {
+       this.currentTarget.classList.remove('moved');
+       this.currentTarget.removeAttribute('style');
+      if (this.hiddenMode && img) {
         event.target.classList.add('img-card-hidden');
       }
-      event.target.parentElement.classList.remove('img-block-move');
     }
-    //let box = event.target.getBoundingClientRect();
-    //console.dir(event);
+
+    if (event.altKey == true) {
+      if (img) {
+        let cardHiddenStatus = event.target.classList.contains('img-card-hidden');
+        if (cardHiddenStatus && img) {
+          event.target.classList.remove('img-card-hidden');
+        } else {
+          event.target.classList.add('img-card-hidden');
+        }
+      }
+    }
   }
 
   hideCardImage() {
     this.hiddenMode = true;
     let arrayCards = document.querySelectorAll('img.img-card');
-    //console.dir(arrayCards);
     for (let i = 0; i < arrayCards.length; i++) {
-      if (arrayCards[i].classList.contains('moved')) {
+      if (arrayCards[i].parentElement.classList.contains('moved')) {
         continue;
       }
       arrayCards[i].classList.add('img-card-hidden');
@@ -138,7 +158,6 @@ export class Area02Component implements OnInit {
   showCardImage() {
     this.hiddenMode = false;
     let arrayCards = document.querySelectorAll('img.img-card');
-    //console.dir(arrayCards);
     for (let i = 0; i < arrayCards.length; i++) {
       arrayCards[i].classList.remove('img-card-hidden');
     }
