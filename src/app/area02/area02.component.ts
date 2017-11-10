@@ -85,6 +85,7 @@ export class Area02Component implements OnInit {
     if (event.target.classList.contains('img-card')) {
       this.currentTarget = event.target.parentElement;
     }
+
     if (event.target.classList.contains('word-block')) {
       this.currentTarget = event.target;
     }
@@ -125,8 +126,8 @@ export class Area02Component implements OnInit {
     }
 
     if (event.ctrlKey == true) {
-       this.currentTarget.classList.remove('moved');
-       this.currentTarget.removeAttribute('style');
+        this.currentTarget.classList.remove('moved');
+        this.currentTarget.removeAttribute('style');
       if (this.hiddenMode && img) {
         event.target.classList.add('img-card-hidden');
       }
