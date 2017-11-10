@@ -66,6 +66,7 @@
 .img-block.moved, 
 .moved .img-card {
     height: auto;
+    border-radius: 10px;
 }
 
 .img-card-hidden {
