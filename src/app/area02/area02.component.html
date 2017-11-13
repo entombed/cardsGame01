@@ -7,8 +7,9 @@
 -->
     <div class="accordion-block-content block1">
         <div class="button-block">
-            <button pButton type="button" class="ui-button-info" label="Скрыть карты" (click)="hideShowImage('block1')"></button>
-            <button pButton type="button" class="ui-button-info" label="Окрыть карты" (click)="hideShowImage('block1')"></button>
+            <button pButton type="button" class="ui-button-info" label="Скрыть карты" (click)="hideCardImage()"></button>
+            <button pButton type="button" class="ui-button-info" label="Окрыть карты" (click)="showCardImage()"></button>
+            <button pButton type="button" class="ui-button-info" label="Перевернуть карты" (click)="hideShowImage('block1')"></button>
             <p-inputSwitch onLabel="Открыть" offLabel="Скрыть" [(ngModel)]="checkedStatus" (onChange)="handleChange($event)"></p-inputSwitch>
         </div>
         <div [ngClass]='"img-block"' *ngFor="let card of arrayCards" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)">

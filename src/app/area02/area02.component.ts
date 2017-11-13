@@ -63,6 +63,7 @@ export class Area02Component implements OnInit {
   zIndex : number = null;
   currentTarget;
   hiddenMode = false;
+
   handleChange(event,) {
     console.log(event);
     if (event.checked) {
