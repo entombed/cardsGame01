@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-area02',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class Area02Component implements OnInit {
 
   constructor() { }
+  checkedStatus: boolean = true;
+
   arrayCards = [
     '1.png',
     '2.png',
@@ -60,6 +63,18 @@ export class Area02Component implements OnInit {
   zIndex : number = null;
   currentTarget;
   hiddenMode = false;
+
+  // handleChange(event) {
+  //   console.log(event);
+  //   if (event.checked) {
+  //     this.hiddenMode = !event.checked;
+  //     this.showCardImage();
+  //   }
+  //   if (!event.checked) {
+  //     this.hiddenMode = event.checked;
+  //     this.hideCardImage();
+  //   }
+  // }
 
   dragStart(event) {
     let area = document.querySelector('body');
@@ -145,9 +160,10 @@ export class Area02Component implements OnInit {
     }
   }
 
-  hideCardImage() {
+  hideCardImage(selector) {
     this.hiddenMode = true;
-    let arrayCards = document.querySelectorAll('img.img-card');
+
+    let arrayCards = document.querySelectorAll( 'div.'+ selector + ' img.img-card');
     for (let i = 0; i < arrayCards.length; i++) {
       if (arrayCards[i].parentElement.classList.contains('moved')) {
         continue;
@@ -158,7 +174,7 @@ export class Area02Component implements OnInit {
 
   showCardImage() {
     this.hiddenMode = false;
-    let arrayCards = document.querySelectorAll('img.img-card');
+    let arrayCards = document.querySelectorAll('img.block1');
     for (let i = 0; i < arrayCards.length; i++) {
       arrayCards[i].classList.remove('img-card-hidden');
     }

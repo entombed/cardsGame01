@@ -7,10 +7,11 @@
 -->
     <div class="accordion-block-content">
         <div class="button-block">
-            <button pButton type="button" class="ui-button-info" label="Скрыть карты" (click)="hideCardImage()"></button>
+            <button pButton type="button" class="ui-button-info" label="Скрыть карты" (click)="hideCardImage('block1')"></button>
             <button pButton type="button" class="ui-button-info" label="Окрыть карты" (click)="showCardImage()"></button>
+<!--             <p-inputSwitch onLabel="Открыть" offLabel="Скрыть" [(ngModel)]="checkedStatus" (onChange)="handleChange($event)"></p-inputSwitch> -->
         </div>
-        <div [ngClass]='"img-block"' *ngFor="let card of arrayCards" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)">
+        <div [ngClass]='"img-block block1"' *ngFor="let card of arrayCards" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)">
             <img [ngClass]='"img-card"' src="./assets/images/{{ card }}" alt="./assets/images/hidden.png"/>
         </div>
     </div>
@@ -27,7 +28,8 @@
 <p-panel header="Набор асоциативных карт 1" [collapsed]="true" [toggleable]="true">
 <div class="accordion-block-content">
     <div class="rev">
-        <button pButton type="button" class="ui-button-info" label="Click" (click)="hideCardImage()"></button>
+        <!-- <button pButton type="button" class="ui-button-info" label="Click" (click)="hideCardImage()"></button> -->
+        
     </div>
     <div [ngClass]='"img-block"' *ngFor="let card of arrayCards" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)">
         <img [ngClass]='"img-card"' src="./assets/images/{{ card }}" />
