@@ -63,18 +63,17 @@ export class Area02Component implements OnInit {
   zIndex : number = null;
   currentTarget;
   hiddenMode = false;
-
-  // handleChange(event) {
-  //   console.log(event);
-  //   if (event.checked) {
-  //     this.hiddenMode = !event.checked;
-  //     this.showCardImage();
-  //   }
-  //   if (!event.checked) {
-  //     this.hiddenMode = event.checked;
-  //     this.hideCardImage();
-  //   }
-  // }
+  handleChange(event,) {
+    console.log(event);
+    if (event.checked) {
+      this.hiddenMode = !event.checked;
+      this.showCardImage();
+    }
+    if (!event.checked) {
+      this.hiddenMode = event.checked;
+      this.hideCardImage();
+    }
+  }
 
   dragStart(event) {
     let area = document.querySelector('body');
@@ -160,10 +159,9 @@ export class Area02Component implements OnInit {
     }
   }
 
-  hideCardImage(selector) {
+  hideCardImage() {
     this.hiddenMode = true;
-
-    let arrayCards = document.querySelectorAll( 'div.'+ selector + ' img.img-card');
+    let arrayCards = document.querySelectorAll( 'img.img-card');
     for (let i = 0; i < arrayCards.length; i++) {
       if (arrayCards[i].parentElement.classList.contains('moved')) {
         continue;
@@ -174,12 +172,31 @@ export class Area02Component implements OnInit {
 
   showCardImage() {
     this.hiddenMode = false;
-    let arrayCards = document.querySelectorAll('img.block1');
+    let arrayCards = document.querySelectorAll('img.img-card');
     for (let i = 0; i < arrayCards.length; i++) {
       if (arrayCards[i].parentElement.classList.contains('moved')) {
         continue;
       }
       arrayCards[i].classList.remove('img-card-hidden');
+    }
+  }
+
+  hideShowImage(selector) {
+    console.log(this.hiddenMode);
+    this.hiddenMode = !this.hiddenMode;
+    let arrayCards = document.querySelectorAll( 'div.'+ selector + ' img.img-card');
+    for (let i = 0; i < arrayCards.length; i++) {
+      if (this.hiddenMode) {
+        if (arrayCards[i].parentElement.classList.contains('moved')) {
+          continue;
+        }
+        arrayCards[i].classList.add('img-card-hidden');
+      } else {
+        if (arrayCards[i].parentElement.classList.contains('moved')) {
+          continue;
+        }
+        arrayCards[i].classList.remove('img-card-hidden');
+      }
     }
   }
 
