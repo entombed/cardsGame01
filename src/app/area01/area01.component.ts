@@ -41,7 +41,12 @@ export class Area01Component implements OnInit {
   }
 
   addTextAreaBlock(event) {
-    console.log("Block add");
+    console.log(event);
+    let tmpl = document.querySelector(".text-area");
+    let insertZone = document.querySelector(".insertZone");
+    console.log(tmpl);
+    let p_prime = document.importNode(tmpl, true);
+    insertZone.appendChild(p_prime);
   }
 
   dragStart(event) {
