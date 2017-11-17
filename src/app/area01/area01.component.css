@@ -4,3 +4,16 @@
     background-color: #90f3b1;
     margin-bottom: 10px;
 }
+.text-area {
+    display: inline-block;
+}
+.text-area  textarea {
+    max-width: 200px !important;
+}
+.header {
+    height:20px;
+    background-color: #74c0ff;
+}
+.moved {
+    position: absolute;
+}

@@ -7,10 +7,11 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
 import { AppComponent } from './app.component';
 import { Area01Component } from './area01/area01.component';
 import { Area02Component } from './area02/area02.component';
-import {PanelModule} from 'primeng/primeng';
-import {DragDropModule} from 'primeng/primeng';
-import {ButtonModule} from 'primeng/primeng';
+import {PanelModule} from 'primeng/primeng'; // акардион панель
+import {DragDropModule} from 'primeng/primeng'; // перемещение объектов
+import {ButtonModule} from 'primeng/primeng'; // кнопки
 import {InputSwitchModule} from 'primeng/primeng'; // переключатель
+import {InputTextareaModule} from 'primeng/primeng'; // text area
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {InputSwitchModule} from 'primeng/primeng'; // переключатель
     DragDropModule,
     BrowserAnimationsModule,
     ButtonModule,
-    InputSwitchModule
+    InputSwitchModule,
+    InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

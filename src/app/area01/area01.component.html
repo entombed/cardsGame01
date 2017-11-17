@@ -1,3 +1,8 @@
-<div class="area01" pDroppable="carszone">
-
+<div class="area01" pDroppable="carszone" (dblclick)="addTextAreaBlock($event)">
+    <div class="text-area" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" >
+        <div class="header" (click)="removeTextAreaBlock($event)">
+            
+        </div>
+        <textarea [rows]="2" [cols]="10" pInputTextarea ></textarea>
+    </div>
 </div>
