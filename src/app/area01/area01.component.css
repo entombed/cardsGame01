@@ -8,7 +8,7 @@
     display: inline-block;
 }
 .text-area  textarea {
-    max-width: 200px !important;
+    max-width: 300px !important;
 }
 .header {
     height:20px;

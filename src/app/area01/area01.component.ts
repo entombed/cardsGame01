@@ -11,7 +11,7 @@ export class Area01Component implements OnInit {
 
   ngOnInit() {
   }
-
+  inputArray: string[] = [];
   areaSize = {
     height: null,
     width: null
@@ -34,6 +34,14 @@ export class Area01Component implements OnInit {
   zIndex : number = null;
   currentTarget;
   
+  addInput(event) {
+    console.log(event);
+    let data = event.target.value;
+    this.inputArray.push(data);
+    console.log(this.inputArray);
+    event.target.value = '';
+  }
+
   getParentBySelector(child, selector) {
     var node = child;
     while (node && !node.classList.contains(selector)) {
@@ -47,7 +55,8 @@ export class Area01Component implements OnInit {
       this.getParentBySelector(event.target, "text-area");
       console.dir(event);
       console.dir(this.currentTarget);
-      this.currentTarget.remove();  //удаляем элемент
+      this.currentTarget.style.display = 'none';
+      //this.currentTarget.remove();  //удаляем элемент
     }
   }
 
