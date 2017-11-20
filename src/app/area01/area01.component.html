@@ -1,12 +1,14 @@
 <div class="area01" id="dropZone" pDroppable="carszone">
 <!--     <input (change)="addInput($event)"> -->
-    <input id="input" type="text" size="30" pInputText (change)="addInput($event)">
+    <input class="ui-g-offset-2 ui-g-8" id="input" type="text" size="30" pInputText (change)="addInput($event)">
 
     <ul>
         <li class="text-area" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" *ngFor="let item of inputArray">
             <div class="header" (click)="onCkick($event)">
             </div>
-            <textarea [rows]="2" [cols]="10" pInputTextarea >{{ item }}</textarea>
+            <textarea [rows]="2" [cols]="10" pInputTextarea >
+                {{ item }}
+            </textarea>
         </li>
     </ul>
 </div>
