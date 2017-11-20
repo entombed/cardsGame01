@@ -33,8 +33,6 @@ export class Area01Component implements OnInit {
   currentObjPosY : number = null;
   zIndex : number = null;
   currentTarget;
-  //currentParent;
-
   
   getParentBySelector(child, selector) {
     var node = child;
@@ -52,15 +50,6 @@ export class Area01Component implements OnInit {
       this.currentTarget.remove();  //удаляем элемент
     }
   }
-
-  // addTextAreaBlock(event) {
-  //   console.log(event);
-  //   let tmpl = document.querySelector(".text-area");
-  //   let insertZone = document.querySelector(".insertZone");
-  //   console.log(tmpl);
-  //   let p_prime = document.importNode(tmpl, true);
-  //   insertZone.appendChild(p_prime);
-  // }
 
   dragStart(event) {
 
@@ -95,14 +84,10 @@ export class Area01Component implements OnInit {
   }
 
   dragEnd(event) {
-//    this.getCurrentPosition(event);
     this.setStylPositionAttribyte();
   }
 
   setStylPositionAttribyte() {
-    // if (this.currentObjPosX >= 0 && this.currentObjPosX <= this.areaSize.width - this.targetProperties.width) {
-    //   this.currentTarget.style.left = this.currentObjPosX + 'px'
-    // }
     if (this.currentObjPosY >= 0 && this.currentObjPosY <= this.areaSize.height - this.targetProperties.height && this.currentObjPosX >= 0 && this.currentObjPosX <= this.areaSize.width - this.targetProperties.width) {
       this.currentTarget.style.left = this.currentObjPosX + 'px'
       this.currentTarget.style.top = this.currentObjPosY + 'px';
@@ -114,17 +99,5 @@ export class Area01Component implements OnInit {
     let offsetY = this.mousePos.Y - event.clientY;
     this.currentObjPosX = this.targetProperties.X - offsetX;
     this.currentObjPosY = this.targetProperties.Y - offsetY;
-    // if (this.currentObjPosX <= 0) {
-    //   this.currentObjPosX = 0;
-    // }
-    // if (this.currentObjPosX >= this.areaSize.width - this.targetProperties.width) {
-    //   this.currentObjPosX = this.areaSize.width - this.targetProperties.width;
-    // }
-    // if (this.currentObjPosY <= 0) {
-    //   this.currentObjPosY = 0;
-    // }
-    // if (this.currentObjPosY >= this.areaSize.height - this.targetProperties.height) {
-    //   this.currentObjPosY = this.areaSize.height - this.targetProperties.height;
-    // }
   }
 }

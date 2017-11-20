@@ -130,6 +130,19 @@ export class Area02Component implements OnInit {
     this.setStylPositionAttribyte();
   }
 
+  onDblclick(event){
+    if (event.target.classList.contains('img-card')) {
+      this.getParentBySelector(event.target, 'img-block');
+    }
+    if (event.target.classList.contains('word-block')) {
+      this.currentTarget = event.target;
+    }
+    this.currentTarget.classList.add('moved');
+    let box = event.target.getBoundingClientRect();
+    this.currentTarget.style.left = this.area.clientWidth / 2 - box.width / 2 + 'px';
+    this.currentTarget.style.top = '50px';
+    this.currentTarget.style.zIndex = 1000;
+  }
 /* 
   событие клик мышки на элементе
  */
@@ -220,9 +233,9 @@ export class Area02Component implements OnInit {
  */
   setStylPositionAttribyte() {
     if (this.currentObjPosY >= 0 && this.currentObjPosY <= this.areaSize.height - this.targetProperties.height && this.currentObjPosX >= 0 && this.currentObjPosX <= this.areaSize.width - this.targetProperties.width) {
-      this.currentTarget.style.left = this.currentObjPosX + 'px'
+      this.currentTarget.style.left = this.currentObjPosX + 'px';
       this.currentTarget.style.top = this.currentObjPosY + 'px';
-    }
+    } 
   }
 
 /* 

@@ -12,7 +12,7 @@
             <button pButton type="button" class="ui-button-info" label="Перевернуть карты" (click)="hideShowImage('block1')"></button>
             <p-inputSwitch onLabel="Открыть" offLabel="Скрыть" [(ngModel)]="checkedStatus" (onChange)="handleChange($event)"></p-inputSwitch>
         </div>
-        <div [ngClass]='"img-block"' *ngFor="let card of arrayCards" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)">
+        <div [ngClass]='"img-block"' *ngFor="let card of arrayCards" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)" (dblclick)="onDblclick($event)">
             <img [ngClass]='"img-card"' src="./assets/images/{{ card }}" alt="./assets/images/hidden.png"/>
         </div>
     </div>
@@ -20,7 +20,7 @@
 
 <p-panel header="Набор слов" [collapsed]="false" [toggleable]="true">
     <div class="accordion-block-content">
-        <div class="word-block" *ngFor="let word of arrayWords" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)" > 
+        <div class="word-block" *ngFor="let word of arrayWords" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" (click)="onClick($event)" (dblclick)="onDblclick($event)"> 
             {{ word }}
         </div>
     </div>
