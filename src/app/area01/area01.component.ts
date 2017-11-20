@@ -33,26 +33,40 @@ export class Area01Component implements OnInit {
   currentObjPosY : number = null;
   zIndex : number = null;
   currentTarget;
+  //currentParent;
 
-  removeTextAreaBlock(event) {
-    if (event.ctrlKey == true) {
-      event.target.parentElement.style.display = 'none';
+  
+  getParentBySelector(child, selector) {
+    var node = child;
+    while (node && !node.classList.contains(selector)) {
+      node = node.parentElement;
+    }
+    this.currentTarget = node;
+  }
+
+  onCkick(event) {
+    if (event.target.classList.contains("header") && event.ctrlKey == true){
+      this.getParentBySelector(event.target, "text-area");
+      console.dir(event);
+      console.dir(this.currentTarget);
+      this.currentTarget.remove();  //удаляем элемент
     }
   }
 
-  addTextAreaBlock(event) {
-    console.log(event);
-    let tmpl = document.querySelector(".text-area");
-    let insertZone = document.querySelector(".insertZone");
-    console.log(tmpl);
-    let p_prime = document.importNode(tmpl, true);
-    insertZone.appendChild(p_prime);
-  }
+  // addTextAreaBlock(event) {
+  //   console.log(event);
+  //   let tmpl = document.querySelector(".text-area");
+  //   let insertZone = document.querySelector(".insertZone");
+  //   console.log(tmpl);
+  //   let p_prime = document.importNode(tmpl, true);
+  //   insertZone.appendChild(p_prime);
+  // }
 
   dragStart(event) {
 
-    let area = document.querySelector('body');
+    let area = document.querySelector('#dropZone');
     let box = event.target.getBoundingClientRect();
+    this.getParentBySelector(event.target, "text-area");
 
     this.targetProperties = {
       X: box.left + pageXOffset,
@@ -70,26 +84,29 @@ export class Area01Component implements OnInit {
       X: event.clientX,
       Y: event.clientY
     };
-
-    if (event.target.classList.contains('text-area')) {
-      this.currentTarget = event.target;
-      this.currentTarget.style.zIndex = 1000;
-    }
   }
 
   drag(event) {
     this.getCurrentPosition(event);
-    this.currentTarget.style.top = this.currentObjPosY + 'px';
-    this.currentTarget.style.left = this.currentObjPosX + 'px';
+    this.setStylPositionAttribyte();
     if (this.currentTarget.classList.contains('moved') == false) {
       this.currentTarget.classList.add('moved');
     }
   }
 
   dragEnd(event) {
-    this.getCurrentPosition(event);
-    this.currentTarget.style.top = this.currentObjPosY + 'px';
-    this.currentTarget.style.left = this.currentObjPosX + 'px';
+//    this.getCurrentPosition(event);
+    this.setStylPositionAttribyte();
+  }
+
+  setStylPositionAttribyte() {
+    // if (this.currentObjPosX >= 0 && this.currentObjPosX <= this.areaSize.width - this.targetProperties.width) {
+    //   this.currentTarget.style.left = this.currentObjPosX + 'px'
+    // }
+    if (this.currentObjPosY >= 0 && this.currentObjPosY <= this.areaSize.height - this.targetProperties.height && this.currentObjPosX >= 0 && this.currentObjPosX <= this.areaSize.width - this.targetProperties.width) {
+      this.currentTarget.style.left = this.currentObjPosX + 'px'
+      this.currentTarget.style.top = this.currentObjPosY + 'px';
+    }
   }
 
   getCurrentPosition(event) {
@@ -97,17 +114,17 @@ export class Area01Component implements OnInit {
     let offsetY = this.mousePos.Y - event.clientY;
     this.currentObjPosX = this.targetProperties.X - offsetX;
     this.currentObjPosY = this.targetProperties.Y - offsetY;
-    if (this.currentObjPosX <= 0) {
-      this.currentObjPosX = 0;
-    }
-    if (this.currentObjPosX >= this.areaSize.width - this.targetProperties.width) {
-      this.currentObjPosX = this.areaSize.width - this.targetProperties.width;
-    }
-    if (this.currentObjPosY <= 0) {
-      this.currentObjPosY = 0;
-    }
-    if (this.currentObjPosY >= this.areaSize.height - this.targetProperties.height) {
-      this.currentObjPosY = this.areaSize.height - this.targetProperties.height;
-    }
+    // if (this.currentObjPosX <= 0) {
+    //   this.currentObjPosX = 0;
+    // }
+    // if (this.currentObjPosX >= this.areaSize.width - this.targetProperties.width) {
+    //   this.currentObjPosX = this.areaSize.width - this.targetProperties.width;
+    // }
+    // if (this.currentObjPosY <= 0) {
+    //   this.currentObjPosY = 0;
+    // }
+    // if (this.currentObjPosY >= this.areaSize.height - this.targetProperties.height) {
+    //   this.currentObjPosY = this.areaSize.height - this.targetProperties.height;
+    // }
   }
 }
