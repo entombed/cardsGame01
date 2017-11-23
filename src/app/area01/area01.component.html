@@ -1,15 +1,16 @@
 <div class="area01" id="dropZone" pDroppable="carszone">
 <!--     <input (change)="addInput($event)"> -->
-    <input class="ui-g-offset-2 ui-g-8" id="input" type="text" size="30" pInputText (change)="addInput($event)">
-
-    <ul>
-        <li class="text-area" pDraggable="carszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)" *ngFor="let item of inputArray">
-            <div class="header" (click)="onCkick($event)">
-            </div>
-            <textarea [rows]="2" [cols]="10" pInputTextarea >
-                {{ item }}
-            </textarea>
-        </li>
-    </ul>
+    <div class="ui-g-offset-2 ui-g-8">
+        <input class="ui-g-12" id="input" type="text" size="30" pInputText (change)="addInput($event)">
+    </div>
+    <div class="ui-g-12">
+        <ul>
+            <li class="text-area" *ngFor="let item of inputArray">
+                <div class="header" (click)="onCkick($event, item)" pDraggable="cardszone" (onDragStart)="dragStart($event)" (onDrag)="drag($event)" (onDragEnd)="dragEnd($event)">
+                </div>
+                <textarea [rows]="2" [cols]="10" pInputTextarea >{{ item }}</textarea>
+            </li>
+        </ul>
+    </div>
 </div>
 

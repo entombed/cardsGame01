@@ -10,7 +10,10 @@ export class Area01Component implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
+
+  area = null;
   inputArray: string[] = [];
   areaSize = {
     height: null,
@@ -35,10 +38,8 @@ export class Area01Component implements OnInit {
   currentTarget;
   
   addInput(event) {
-    console.log(event);
     let data = event.target.value;
     this.inputArray.push(data);
-    console.log(this.inputArray);
     event.target.value = '';
   }
 
@@ -50,19 +51,15 @@ export class Area01Component implements OnInit {
     this.currentTarget = node;
   }
 
-  onCkick(event) {
+  onCkick(event, item) {
     if (event.target.classList.contains("header") && event.ctrlKey == true){
-      this.getParentBySelector(event.target, "text-area");
-      console.dir(event);
-      console.dir(this.currentTarget);
-      this.currentTarget.style.display = 'none';
-      //this.currentTarget.remove();  //удаляем элемент
+      let index = this.inputArray.indexOf(item);
+      this.inputArray.splice(index, 1);
     }
   }
 
   dragStart(event) {
-
-    let area = document.querySelector('#dropZone');
+    let area = document.querySelector('body');
     let box = event.target.getBoundingClientRect();
     this.getParentBySelector(event.target, "text-area");
 
