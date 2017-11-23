@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms'; //нужен для работы InputSwitchModule
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
+
 import { AppComponent } from './app.component';
 import { Area01Component } from './area01/area01.component';
 import { Area02Component } from './area02/area02.component';
@@ -12,6 +13,7 @@ import {DragDropModule} from 'primeng/primeng'; // перемещение объ
 import {ButtonModule} from 'primeng/primeng'; // кнопки
 import {InputSwitchModule} from 'primeng/primeng'; // переключатель
 import {InputTextareaModule} from 'primeng/primeng'; // text area
+import {SidebarModule} from 'primeng/primeng'; // выпадающая панель
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {InputTextareaModule} from 'primeng/primeng'; // text area
     BrowserAnimationsModule,
     ButtonModule,
     InputSwitchModule,
-    InputTextareaModule
+    InputTextareaModule,
+    SidebarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

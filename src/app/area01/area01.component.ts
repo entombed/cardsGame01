@@ -10,16 +10,16 @@ export class Area01Component implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
+    this.inputField = document.getElementById("inputField");
   }
-
+  inputField = null;
   area = null;
   inputArray: string[] = [];
   areaSize = {
     height: null,
     width: null
   };
-
+  block = null;
   mousePos = {
     X: null,
     Y: null
@@ -36,11 +36,12 @@ export class Area01Component implements OnInit {
   currentObjPosY : number = null;
   zIndex : number = null;
   currentTarget;
+  visibleSidebar;
   
   addInput(event) {
-    let data = event.target.value;
+    let data = this.inputField.value;
     this.inputArray.push(data);
-    event.target.value = '';
+    this.inputField.value = '';
   }
 
   getParentBySelector(child, selector) {
@@ -52,7 +53,7 @@ export class Area01Component implements OnInit {
   }
 
   onCkick(event, item) {
-    if (event.target.classList.contains("header") && event.ctrlKey == true){
+    if (event.target.classList.contains("header") && event.ctrlKey === true){
       let index = this.inputArray.indexOf(item);
       this.inputArray.splice(index, 1);
     }
@@ -84,7 +85,7 @@ export class Area01Component implements OnInit {
   drag(event) {
     this.getCurrentPosition(event);
     this.setStylPositionAttribyte();
-    if (this.currentTarget.classList.contains('moved') == false) {
+    if (this.currentTarget.classList.contains('moved') === false) {
       this.currentTarget.classList.add('moved');
     }
   }

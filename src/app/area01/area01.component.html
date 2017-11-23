@@ -1,8 +1,21 @@
+<p-sidebar [(visible)]="visibleSidebar" position="bottom" [baseZIndex]="1000">
+    <div class="ui-g-offset-2 ui-g-8">
+            <div class="ui-inputgroup">
+                <input class="ui-g-12" id="inputField" type="text" size="30" pInputText >
+                <button pButton type="button" label="Добавить" (click)="addInput()"></button>
+            </div>
+    </div>
+</p-sidebar>
+
 <div class="area01" id="dropZone" pDroppable="carszone">
 <!--     <input (change)="addInput($event)"> -->
+
+
+<!--
     <div class="ui-g-offset-2 ui-g-8">
         <input class="ui-g-12" id="input" type="text" size="30" pInputText (change)="addInput($event)">
     </div>
+ -->
     <div class="ui-g-12">
         <ul>
             <li class="text-area" *ngFor="let item of inputArray">
@@ -12,5 +25,6 @@
             </li>
         </ul>
     </div>
+    <button class="buttonSidebar" pButton type="button" (click)="visibleSidebar = true" icon="fa-arrow-up"></button>
 </div>
 
